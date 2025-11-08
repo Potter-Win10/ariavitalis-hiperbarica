@@ -1,0 +1,1282 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oxigenoterapia Hiperbárica</title>
+  <!-- REMOVIDO: Scripts SDK que não funcionarão no GitHub -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #1a2332;
+      background: #ffffff;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0066cc;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1a2332;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #0066cc;
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-top: 80px;
+      background: linear-gradient(135deg, #0066cc 0%, #0099cc 100%);
+      color: white;
+      padding: 6rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: #0066cc;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Section Styles */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #1a2332;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #64748b;
+      margin-bottom: 4rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* What is OHB Section */
+    .what-is-ohb {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      padding: 5rem 2rem;
+    }
+
+    .ohb-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .ohb-text h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #1a2332;
+    }
+
+    .ohb-text p {
+      font-size: 1.1rem;
+      color: #475569;
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .ohb-visual {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    .ohb-illustration {
+      width: 100%;
+      height: 300px;
+      background: #f0f9ff;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hyperbaric-chamber {
+      width: 280px;
+      height: 120px;
+      background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+      border-radius: 60px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .chamber-window {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%);
+      border-radius: 50%;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      border: 4px solid #374151;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .chamber-body {
+      position: absolute;
+      right: 20px;
+      top: 30px;
+      width: 160px;
+      height: 60px;
+      background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .control-panel {
+      width: 30px;
+      height: 40px;
+      background: #374151;
+      border-radius: 5px;
+      position: relative;
+    }
+
+    .control-panel::before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 20px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 2px;
+    }
+
+    .control-panel::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      width: 20px;
+      height: 8px;
+      background: #3b82f6;
+      border-radius: 2px;
+    }
+
+    .oxygen-flow {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: #0066cc;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0px); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+
+    /* How It Works */
+    .how-it-works {
+      background: white;
+    }
+
+    .steps-container {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 3rem;
+      padding: 2rem 0;
+    }
+
+    .journey-path {
+      position: absolute;
+      top: 80px;
+      left: 15%;
+      right: 15%;
+      height: 4px;
+      background: linear-gradient(90deg, #0066cc 0%, #00cccc 50%, #0066cc 100%);
+      border-radius: 2px;
+      z-index: 1;
+    }
+
+    .journey-path::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: linear-gradient(90deg, transparent 0%, rgba(0, 102, 204, 0.3) 50%, transparent 100%);
+      border-radius: 4px;
+      animation: flow 3s ease-in-out infinite;
+    }
+
+    @keyframes flow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+
+    .step {
+      flex: 1;
+      text-align: center;
+      padding: 2rem 1rem;
+      background: white;
+      border-radius: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      z-index: 2;
+      margin: 0 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .step:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 50px rgba(0, 102, 204, 0.2);
+    }
+
+    .step-number {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #0066cc 0%, #00cccc 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 10px 25px rgba(0, 102, 204, 0.3);
+      position: relative;
+    }
+
+    .step-number::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 3px solid rgba(0, 102, 204, 0.2);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.2); opacity: 0; }
+    }
+
+    .step h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #1a2332;
+    }
+
+    .step p {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* Applications Explorer */
+    .applications {
+      background: #f8fafc;
+    }
+
+    .tabs-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-button {
+      padding: 1rem 2rem;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .tab-button:hover {
+      border-color: #0066cc;
+      color: #0066cc;
+    }
+
+    .tab-pain.active {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      color: white;
+      border-color: transparent;
+    }
+
+    .tab-wounds.active {
+      background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+      color: white;
+      border-color: transparent;
+    }
+
+    .tab-rehab.active {
+      background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+      color: white;
+      border-color: transparent;
+    }
+
+    .tab-sports.active {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: white;
+      border-color: transparent;
+    }
+
+    .tab-content {
+      display: none;
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .tab-content.active {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .tab-info h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #1a2332;
+    }
+
+    .conditions-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .conditions-list li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #e2e8f0;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .conditions-list li::before {
+      content: '✓';
+      color: #0066cc;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    #pain-tab .conditions-list li::before {
+      color: #f97316;
+    }
+
+    #wounds-tab .conditions-list li::before {
+      color: #dc2626;
+    }
+
+    #rehab-tab .conditions-list li::before {
+      color: #16a34a;
+    }
+
+    #sports-tab .conditions-list li::before {
+      color: #2563eb;
+    }
+
+    .benefits-box {
+      background: #f0f9ff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #0066cc;
+    }
+
+    .benefits-box h4 {
+      color: #0066cc;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .tab-visual {
+      height: 400px;
+      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      overflow: hidden;
+    }
+
+    .tab-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .sports-visual {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      position: relative;
+    }
+
+    .sports-icon {
+      width: 200px;
+      height: 200px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 40px rgba(37, 99, 235, 0.3);
+      position: relative;
+    }
+
+    .sports-icon::before {
+      content: '🏃‍♂️';
+      font-size: 4rem;
+      position: absolute;
+    }
+
+    .sports-icon::after {
+      content: '';
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* Benefits Section */
+    .benefits-section {
+      background: white;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3rem;
+    }
+
+    .benefit-column h3 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: #0066cc;
+      text-align: center;
+    }
+
+    .benefit-item {
+      background: #f8fafc;
+      padding: 2rem;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid #0066cc;
+    }
+
+    .benefit-item h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+      color: #1a2332;
+    }
+
+    .benefit-item p {
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* Regulations Section */
+    .regulations {
+      background: #f8fafc;
+    }
+
+    .regulations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .regulation-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .regulation-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .regulation-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .regulation-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #1a2332;
+    }
+
+    .regulation-card p {
+      color: #64748b;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 600;
+      transition: gap 0.3s;
+    }
+
+    .download-link:hover {
+      gap: 1rem;
+    }
+
+    /* Lead Form Section */
+    .lead-form-section {
+      background: linear-gradient(135deg, #0066cc 0%, #0099cc 100%);
+      color: white;
+      padding: 5rem 2rem;
+    }
+
+    .form-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-container h2 {
+      color: #1a2332;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .form-container p {
+      color: #64748b;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    /* O CSS para o formulário (form-group, success-message, etc.) 
+       foi mantido caso o Tally precise deles, mas provavelmente
+       o Tally usará seus próprios estilos dentro do iframe. */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      color: #1a2332;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: inherit;
+      color: #000000;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #0066cc;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 1.2rem;
+      background: linear-gradient(135deg, #0066cc 0%, #00cccc 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+    }
+
+    .submit-button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .success-message {
+      display: none;
+      background: #10b981;
+      color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    .error-message {
+      display: none;
+      background: #ef4444;
+      color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background: #1a2332;
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .gradient-bg{background:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 50%,#60a5fa 100%)}.floating{animation:float 3s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}.fade-in{animation:fadeIn 1s ease-in}@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .ohb-content,
+      .tab-content.active,
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .journey-path {
+        display: none;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .hyperbaric-chamber {
+        width: 240px;
+        height: 100px;
+      }
+
+      .chamber-window {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+
+      .chamber-body {
+        width: 120px;
+        height: 50px;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <nav>
+   <div class="nav-container">
+    <div class="logo">
+     Aria Vitalis
+    </div>
+    <ul class="nav-links">
+     <li><a href="#about">Sobre</a></li>
+     <li><a href="#applications">Aplicações</a></li>
+    </ul>
+   </div>
+  </nav>
+  <section class="gradient-bg text-white min-h-full flex items-center relative overflow-hidden">
+   <div class="absolute inset-0 opacity-10">
+    <svg class="w-full h-full" viewbox="0 0 100 100" fill="none">
+     <defs>
+      <pattern id="grid" width="10" height="10">
+       <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" />
+      </pattern>
+     </defs><rect width="100" height="100" fill="url(#grid)" />
+    </svg>
+   </div>
+   <div class="container mx-auto px-6 py-20 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+     <div class="space-y-8 fade-in">
+      <div class="space-y-6">
+       <h1 id="hero-title" class="text-5xl lg:text-7xl font-bold leading-tight">Aria Vitalis – Oxigenoterapia<br><span class="text-blue-200">Hiperbárica</span></h1>
+       <h2 id="hero-subtitle" class="text-2xl lg:text-3xl font-semibold text-blue-100">Um novo olhar para a saúde</h2>
+       <p id="hero-description" class="text-xl text-blue-100 leading-relaxed">Acelerando a cura e recuperação através da medicina hiperbárica avançada</p>
+      </div><a href="#benefits" class="border-2 border-white text-white hover:bg-white hover:text-blue-800 px-8 py-4 rounded-lg font-semibold text-lg transition-all inline-block" id="cta-button">Saiba Mais</a>
+      <div class="flex items-center space-x-4 text-blue-100">
+       <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20">
+        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a. 4z" clip-rule="evenodd" />
+       </svg><span class="font-medium">Em Breve...</span>
+      </div>
+     </div>
+     <div class="relative">
+      <div class="floating">
+       <svg class="w-full h-96" viewbox="0 0 400 300" fill="none"><ellipse cx="200" cy="150" rx="180" ry="80" fill="url(#chamberGradient)" stroke="#e5e7eb" stroke-width="2" /> <circle cx="200" cy="150" r="40" fill="url(#windowGradient)" stroke="#d1d5db" stroke-width="2" /> <rect x="320" y="100" width="60" height="100" rx="8" fill="url(#panelGradient)" stroke="#9ca3af" stroke-width="1" /> <circle cx="340" cy="120" r="4" fill="#10b981" /><circle cx="360" cy="120" r="4" fill="#f59e0b" /><circle cx="340" cy="140" r="4" fill="#3b82f6" /><circle cx="360" cy="140" r="4" fill="#ef4444" /> <rect x="330" y="160" width="40" height="20" rx="4" fill="#1f2937" /> <text x="350" y="173" text-anchor="middle" fill="#10b981" font-family="monospace" font-size="8">
+         2.4 ATA
+        </text> <path d="M 380 150 Q 420 150 420 120" stroke="#6b7280" stroke-width="3" fill="none" /> <path d="M 380 170 Q 420 170 420 200" stroke="#6b7280" stroke-width="3" fill="none" /> <ellipse cx="200" cy="230" rx="160" ry="20" fill="#f3f4f6" stroke="#d1d5db" /> <defs>
+         <lineargradient id="chamberGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#f8fafc" />
+          <stop offset="100%" style="stop-color:#e2e8f0" />
+         </lineargradient>
+         <radialgradient id="windowGradient" cx="50%" cy="30%">
+          <stop offset="0%" style="stop-color:#dbeafe" />
+          <stop offset="100%" style="stop-color:#93c5fd" />
+         </radialgradient>
+         <lineargradient id="panelGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#f9fafb" />
+          <stop offset="100%" style="stop-color:#e5e7eb" />
+         </lineargradient>
+        </defs>
+       </svg>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <div class="what-is-ohb" id="about">
+   <div class="ohb-content">
+    <div class="ohb-text">
+     <h2 id="about-title">O que é Oxigenoterapia Hiperbárica?</h2>
+     <p>A Oxigenoterapia Hiperbárica (OHB) é um tratamento médico que envolve respirar oxigênio puro em uma câmara pressurizada. Isso aumenta a quantidade de oxigênio que seu sangue pode transportar, promovendo a cura e combatendo infecções.</p>
+     <p>Ao fornecer oxigênio em pressões maiores que a pressão atmosférica normal, a OHB potencializa os processos naturais de cura do corpo, reduz a inflamação e estimula o crescimento de novos vasos sanguíneos.</p>
+     <p>Usada mundialmente há décadas, a OHB é reconhecida pelas principais organizações médicas como um tratamento eficaz para inúmeras condições.</p>
+    </div>
+    <div class="ohb-visual">
+     <div class="ohb-illustration">
+      <div class="hyperbaric-chamber">
+       <div class="chamber-window">
+        👤
+       </div>
+       <div class="chamber-body">
+        <div class="control-panel"></div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <section class="how-it-works">
+   <h2 class="section-title">Como Funciona</h2>
+   <p class="section-subtitle">Um processo simples, seguro e comprovado em três etapas</p>
+   <div class="steps-container">
+    <div class="journey-path"></div>
+    <div class="step">
+     <div class="step-number">
+      1
+     </div>
+     <h3>Consulta</h3>
+     <p>Encontre-se com nossos especialistas para avaliar sua condição e determinar se a OHB é adequada para você</p>
+    </div>
+    <div class="step">
+     <div class="step-number">
+      2
+     </div>
+     <h3>Tratamento</h3>
+     <p>Relaxe em nossa confortável câmara hiperbárica enquanto respira oxigênio puro por 60-90 minutos</p>
+    </div>
+    <div class="step">
+     <div class="step-number">
+      3
+     </div>
+     <h3>Recuperação</h3>
+     <p>Experimente a cura acelerada através de um plano de tratamento personalizado adaptado às suas necessidades</p>
+    </div>
+   </div>
+  </section>
+  <section class="applications" id="applications">
+   <h2 class="section-title">Aplicações do Tratamento</h2>
+   <p class="section-subtitle">Explore como a OHB pode ajudar com várias condições</p>
+   <div class="tabs-container"><button class="tab-button tab-pain active" data-tab="pain">Dor Crônica</button> <button class="tab-button tab-wounds" data-tab="wounds">Feridas Difíceis</button> <button class="tab-button tab-rehab" data-tab="rehab">Reabilitação</button> <button class="tab-button tab-sports" data-tab="sports">Medicina Esportiva</button>
+   </div>
+   <div class="tab-content active" id="pain-tab">
+    <div class="tab-info">
+     <h3>Tratamento de Dor Crônica</h3>
+     <ul class="conditions-list">
+      <li>Fibromialgia</li>
+      <li>Síndrome da Dor Regional Complexa</li>
+      <li>Dor neuropática</li>
+      <li>Dor pós-cirúrgica</li>
+      <li>Enxaqueca e dores de cabeça</li>
+     </ul>
+     <div class="benefits-box">
+      <h4>Principais Benefícios</h4>
+      <p>Reduz a inflamação, melhora a circulação e ajuda a controlar condições de dor crônica através do fornecimento aprimorado de oxigênio aos tecidos afetados.</p>
+     </div>
+    </div>
+    <div class="tab-visual"><img src="https://i.ibb.co/v4xWbhB7/Pain.png" alt="Tratamento de Dor Crônica" onerror="this.src='https://placehold.co/600x400/f97316/white?text=Dor+Crônica'; this.alt='Imagem de Tratamento de Dor Crônica';">
+    </div>
+   </div>
+   <div class="tab-content" id="wounds-tab">
+    <div class="tab-info">
+     <h3>Cicatrização de Feridas</h3>
+     <ul class="conditions-list">
+      <li>Úlceras do pé diabético</li>
+      <li>Lesões por radiação</li>
+      <li>Feridas cirúrgicas que não cicatrizam</li>
+      <li>Enxertos de pele comprometidos</li>
+      <li>Lesões por esmagamento</li>
+     </ul>
+     <div class="benefits-box">
+      <h4>Principais Benefícios</h4>
+      <p>Acelera a cicatrização promovendo o crescimento de novos vasos sanguíneos, combatendo infecções e melhorando a regeneração dos tecidos.</p>
+     </div>
+    </div>
+    <div class="tab-visual"><img src="https://i.ibb.co/VWpkGQbS/Wound.png" alt="Cicatrização de Feridas" onerror="this.src='https://placehold.co/600x400/dc2626/white?text=Feridas'; this.alt='Imagem de Cicatrização de Feridas';">
+    </div>
+   </div>
+   <div class="tab-content" id="rehab-tab">
+    <div class="tab-info">
+     <h3>Suporte à Reabilitação</h3>
+     <ul class="conditions-list">
+      <li>Recuperação de AVC</li>
+      <li>Lesão cerebral traumática</li>
+      <li>Síndrome pós-concussão</li>
+      <li>Lesões da medula espinhal</li>
+      <li>Condições neurológicas</li>
+     </ul>
+     <div class="benefits-box">
+      <h4>Principais Benefícios</h4>
+      <p>Apoia a recuperação neurológica melhorando o suprimento de oxigênio ao tecido cerebral danificado e promovendo a regeneração neural.</p>
+     </div>
+    </div>
+    <div class="tab-visual"><img src="https://i.ibb.co/RkWTcHS4/Rehab.png" alt="Suporte à Reabilitação" onerror="this.src='https://placehold.co/600x400/16a34a/white?text=Reabilitação'; this.alt='Imagem de Suporte à Reabilitação';">
+    </div>
+   </div>
+   <div class="tab-content" id="sports-tab">
+    <div class="tab-info">
+     <h3>Medicina Esportiva</h3>
+     <ul class="conditions-list">
+      <li>Lesões musculares</li>
+      <li>Danos nos ligamentos</li>
+      <li>Fraturas ósseas</li>
+      <li>Recuperação pós-cirúrgica</li>
+      <li>Otimização de performance</li>
+     </ul>
+     <div class="benefits-box">
+      <h4>Principais Benefícios</h4>
+      <p>Acelera a recuperação de lesões esportivas, reduz o tempo de inatividade e ajuda atletas a retornarem ao desempenho máximo mais rapidamente.</p>
+     </div>
+    </div>
+    <div class="tab-visual sports-visual">
+     <div class="sports-icon"></div>
+    </div>
+   </div>
+  </section>
+  <section class="benefits-section" id="benefits">
+   <h2 class="section-title">Por que Escolher a OHB?</h2>
+   <p class="section-subtitle">Benefícios para pacientes e profissionais de saúde</p>
+   <div class="benefits-grid">
+    <div class="benefit-column">
+     <h3>Para Pacientes</h3>
+     <div class="benefit-item">
+      <h4>Tratamento Não-Invasivo</h4>
+      <p>Terapia segura e confortável sem necessidade de procedimentos cirúrgicos</p>
+     </div>
+     <div class="benefit-item">
+      <h4>Recuperação Mais Rápida</h4>
+      <p>Tempos de cura acelerados comparados aos tratamentos convencionais isolados</p>
+     </div>
+     <div class="benefit-item">
+      <h4>Melhoria na Qualidade de Vida</h4>
+      <p>Redução da dor, melhor mobilidade e bem-estar geral aprimorado</p>
+     </div>
+     <div class="benefit-item">
+      <h4>Resultados Comprovados</h4>
+      <p>Décadas de evidência clínica apoiando a eficácia</p>
+     </div>
+    </div>
+    <div class="benefit-column">
+     <h3>Para Profissionais de Saúde</h3>
+     <div class="benefit-item">
+      <h4>Baseado em Evidências</h4>
+      <p>Apoiado por extensa pesquisa revisada por pares e ensaios clínicos</p>
+     </div>
+     <div class="benefit-item">
+      <h4>Terapia Complementar</h4>
+      <p>Melhora os resultados quando combinada com tratamentos padrão</p>
+     </div>
+     <div class="benefit-item">
+      <h4>Equipe Especializada</h4>
+      <p>Colaboração com equipe médica experiente em OHB</p>
+     </div>
+     <div class="benefit-item">
+      <h4>Relatórios Holísticos de Saúde</h4>
+      <p>Documentação detalhada do tratamento e acompanhamento do progresso</p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="regulations">
+   <h2 class="section-title">Regulamentações e Diretrizes</h2>
+   <p class="section-subtitle">Prática transparente, em conformidade e baseada em evidências</p>
+   <div class="regulations-grid">
+    <div class="regulation-card">
+     <div class="regulation-icon">
+      📄
+     </div>
+     <h3>Diretrizes de Utilização</h3>
+     <p>Protocolo oficial para uso da OHB</p><a href="https://drive.google.com/file/d/13AtfVNI1K6hp4Kl5CSCUsse0kpd_azUM/view?usp=sharing" class="download-link" target="_blank" rel="noopener noreferrer">Baixar PDF →</a>
+    </div>
+    <div class="regulation-card">
+     <div class="regulation-icon">
+      🔬
+     </div>
+     <h3>Evidência Clínica</h3>
+     <p>Pesquisas revisadas por pares apoiando a eficácia e segurança da OHB</p><a href="https://www.avivprotocol.com/scientific-package" class="download-link" target="_blank" rel="noopener noreferrer">Ver Estudos →</a>
+    </div>
+    <div class="regulation-card">
+     <div class="regulation-icon">
+      ✅
+     </div>
+     <h3>Resolução CFM</h3>
+     <p>Regulamentação oficial do Conselho Federal de Medicina</p><a href="https://drive.google.com/file/d/10Rm2ZUf98e9c_U0G3t_DDbqbPrGqUwTw/view?usp=sharing" class="download-link" target="_blank" rel="noopener noreferrer">Saiba Mais →</a>
+    </div>
+   </div>
+  </section>
+  <section class="lead-form-section" id="contact">
+   <div class="form-container">
+    <h2 id="form-title">Receba informações exclusivas antes do lançamento</h2>
+    <p>Nosso time entrará em contato para conversar sobre Oxigenoterapia Hiperbárica e como ela pode ajudar você ou seus pacientes.</p>
+    
+    <iframe data-tally-src="https://tally.so/embed/81oR4x?hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" loading="lazy" width="100%" height="528" frameborder="0" marginheight="0" marginwidth="0" title="Forms"></iframe>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+
+   </div>
+  </section>
+  <footer>
+   <div class="footer-content">
+    <div class="footer-links"><a href="#about">Sobre</a> <a href="#applications">Aplicações</a> <a href="https://docs.google.com/document/d/1W3mwr-0InFGiDq3bLke1fJOsJ5dztUElSkV815DEjd8/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>
+    </div>
+    <p>© 2025 Aria Vitalis. Todos os direitos reservados.</p>
+   </div>
+  </footer>
+  <script>
+    // Configuração padrão para o elemento
+    const defaultConfig = {
+      hero_title: "Oxigenoterapia Hiperbárica",
+      hero_subtitle: "Um novo olhar para a saúde",
+      cta_button: "Saiba Mais",
+      about_title: "O que é Oxigenoterapia Hiperbárica?",
+      form_title: "Receba informações exclusivas antes do lançamento",
+      form_button: "Registrar",
+      background_color: "#ffffff",
+      primary_color: "#0066cc",
+      secondary_color: "#f8fafc",
+      text_color: "#1a2332",
+      accent_color: "#00cccc",
+      font_family: "Inter",
+      font_size: 16
+    };
+
+    //let currentData = []; // Não é mais usado para o formulário
+    let currentConfig = { ...defaultConfig };
+
+    // Handler para dados (mantido caso seja usado para outra coisa no futuro, mas não mais para o formulário)
+    /*
+    const dataHandler = {
+      onDataChanged(data) {
+        currentData = data;
+      }
+    };
+    */
+
+    // Função chamada quando a configuração muda
+    async function onConfigChange(config) {
+      currentConfig = { ...defaultConfig, ...config };
+      
+      const customFont = currentConfig.font_family;
+      const baseFontStack = '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      const baseSize = currentConfig.font_size;
+      
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      document.body.style.fontSize = `${baseSize}px`;
+      
+      // Atualiza textos
+      document.getElementById('hero-title').innerHTML = currentConfig.hero_title.replace('<br>', '<br><span class="text-blue-200">') + '</span>'; // Manter a quebra de linha e estilo
+      document.getElementById('hero-subtitle').textContent = currentConfig.hero_subtitle;
+      document.getElementById('cta-button').textContent = currentConfig.cta_button;
+      document.getElementById('about-title').textContent = currentConfig.about_title;
+      document.getElementById('form-title').textContent = currentConfig.form_title;
+      // document.getElementById('form-button').textContent = currentConfig.form_button; // Removido pois o botão está no Tally
+      
+      // Atualiza cores
+      const backgroundColor = currentConfig.background_color;
+      const primaryColor = currentConfig.primary_color;
+      const secondaryColor = currentConfig.secondary_color;
+      const textColor = currentConfig.text_color;
+      const accentColor = currentConfig.accent_color;
+      
+      document.body.style.background = backgroundColor;
+      document.body.style.color = textColor;
+      
+      // Cores primárias e de destaque
+      document.querySelectorAll('.gradient-bg, .lead-form-section').forEach(el => {
+         el.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${accentColor} 100%)`;
+      });
+      
+      document.querySelectorAll('.what-is-ohb, .applications, .regulations, .benefits-section .benefit-item').forEach(el => {
+        el.style.background = secondaryColor;
+      });
+      
+      document.querySelectorAll('.logo, .nav-links a:hover, .benefit-column h3, .download-link, .conditions-list li::before, .benefits-box h4, .benefits-box').forEach(el => {
+        el.style.color = primaryColor;
+      });
+       document.querySelectorAll('.benefits-box, .benefit-item').forEach(el => {
+        el.style.borderColor = primaryColor;
+      });
+
+      document.querySelectorAll('.form-group input:focus, .form-group select:focus, .form-group textarea:focus').forEach(el => {
+          el.style.borderColor = primaryColor;
+      });
+
+      // Botões e elementos de destaque
+      document.querySelectorAll('.step-number, .submit-button').forEach(el => {
+        el.style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${accentColor} 100%)`;
+      });
+
+      // Hero CTA
+       document.getElementById('cta-button').style.borderColor = 'white';
+       document.getElementById('cta-button').style.color = 'white';
+       document.getElementById('cta-button').addEventListener('mouseenter', () => {
+           document.getElementById('cta-button').style.backgroundColor = 'white';
+           document.getElementById('cta-button').style.color = primaryColor; // Use primary color on hover
+       });
+       document.getElementById('cta-button').addEventListener('mouseleave', () => {
+           document.getElementById('cta-button').style.backgroundColor = 'transparent';
+           document.getElementById('cta-button').style.color = 'white';
+       });
+    }
+
+    // REMOVIDO: SDKs
+    /*
+    if (window.elementSdk) { ... }
+    if (window.dataSdk) { ... }
+    */
+
+    // Lógica para abas (Tabs)
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove 'active' de todos os botões e conteúdos
+        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        // Adiciona 'active' ao botão clicado e ao conteúdo correspondente
+        button.classList.add('active');
+        const tabId = button.getAttribute('data-tab') + '-tab';
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    // REMOVIDO: Lógica do formulário (lead-form)
+    /*
+    document.getElementById('lead-form').addEventListener('submit', async (e) => {
+      // Todo o código de envio do Formspree foi removido.
+    });
+    */
+
+    // Lógica de Scroll Suave para âncoras
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+            // Calcula a posição do elemento alvo, descontando a altura do nav fixo
+            const navHeight = document.querySelector('nav')?.offsetHeight || 0;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20; // 20px de margem
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+      });
+    });
+
+    // Garante que a configuração inicial seja aplicada no carregamento
+    onConfigChange(defaultConfig);
+  </script>
+ <!-- O script injetado pelo Cloudflare foi mantido para replicação exata do original, 
+      embora no GitHub Pages ele não vá funcionar da mesma forma (mas também não causará erro) -->
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99b771a9c7024f61',t:'MTc2MjYyOTc5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
